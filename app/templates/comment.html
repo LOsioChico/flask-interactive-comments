@@ -1,0 +1,32 @@
+{% block comment %}
+
+<div class="bg-white p-6 rounded-lg">
+    <div class="flex gap-6">
+        <!-- Score -->
+        <div class="flex flex-col items-center justify-center bg-neutral-very-light-gray font-medium w-10 rounded-lg text-primary-moderate-blue h-24">
+            <div class="text-primary-light-grayish-blue cursor-pointer text-lg hover:text-primary-moderate-blue transition-all duration-150">+</div>
+            <div class="">{{ comment.score }}</div>
+            <div class="text-primary-light-grayish-blue cursor-pointer text-lg hover:text-primary-moderate-blue transition-all duration-150">-</div>
+        </div>
+
+        <div class="flex flex-col">
+            <div class="flex justify-between">
+                <!-- User -->
+                <div class="flex gap-4 items-center justify-center">
+                    <img src="{{ comment.user.image }}" alt="avatar" class="size-8 rounded-full">
+                    <span class="font-medium">{{ comment.user.username }}</span>    
+                    <span class="opacity-30">{{ comment.created_at }}</span>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-2 max-w-[600px] text-neutral-grayish-blue">
+                {{ comment.content }}
+            </div> 
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
