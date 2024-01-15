@@ -1,7 +1,7 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 from app.utils import populate_db
 from app.db.sqlalchemy import db
+from app.views import comments_bp
 
 
 def create_app():
@@ -13,9 +13,8 @@ def create_app():
 
     db.init_app(app)
 
-    @app.route('/')
-    def index():
-        return render_template('index.html')
+    # Register blueprints
+    app.register_blueprint(comments_bp, url_prefix='/')
 
     with app.app_context():
         # Create Database Models
